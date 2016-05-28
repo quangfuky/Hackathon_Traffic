@@ -31,17 +31,28 @@ public class SpawnManager : MonoBehaviour {
                 break;
             }
             GameObject objCar = ManagerObject.Instance.SpawnObjectByType(ObjectType.CAR_PREFABS);
-            objCar.transform.position = RandomPosition();
+
+            Transform pointSpawn = RandomPosition();
+            if(pointSpawn)
+            {
+                objCar.transform.position = pointSpawn.position;
+                CPointSpawn pointSpawnScript = pointSpawn.GetComponent<CPointSpawn>();
+                if (pointSpawnScript)
+                {
+                    objCar.transform.eulerAngles = pointSpawnScript.forward;
+                }
+            }
 
             currCountCar++;
             yield return new WaitForSeconds(Random.Range(2f,4f));
         }
     }
 	
-    public Vector3 RandomPosition()
+    public Transform RandomPosition()
     {
         int _index = Random.Range(0,listPosition.Count);
-        return listPosition[_index].position;
+        Debug.Log(_index);
+        return listPosition[_index];
     }
 	// Update is called once per frame
 	void Update () {

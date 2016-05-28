@@ -77,7 +77,7 @@ public class CCar : MonoBehaviour {
             }
         }
     }
-
+    public GameObject objTest;
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "CheckPoint" && !isCollided)
@@ -92,13 +92,17 @@ public class CCar : MonoBehaviour {
             else
             {
                 Debug.Log("den do");
-                isCollided = true;
+                
                 // random co vuot den do hay ko 
                 bool violation = RandomViolation();
                 Debug.Log("vi pham:" + violation);
                 if (violation) // if true : vuot den do
                 {
                     canMove = true;
+                    if(objTest)
+                    {
+                        objTest.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -106,6 +110,7 @@ public class CCar : MonoBehaviour {
                     Invoke("ChangeStateMove", 3);
                 }
             }
+            isCollided = true;
         }
     }
 
