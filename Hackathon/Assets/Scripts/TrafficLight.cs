@@ -7,7 +7,7 @@ public class TrafficLight : MonoBehaviour
     public List<GameObject> redLight;
     public List<GameObject> greenLight;
 
-    public List<GameObject> checkPoint; 
+    public List<CheckPoint> checkPoint; 
 
 
     public float lightTime;
@@ -45,6 +45,7 @@ public class TrafficLight : MonoBehaviour
         {
             var green = greenLight[index];
             green.SetActive(index % 2 == lightIndex);
+            checkPoint[index].canGo = index%2 == lightIndex;
         }
 
         for (int index = 0; index < redLight.Count; index++)
