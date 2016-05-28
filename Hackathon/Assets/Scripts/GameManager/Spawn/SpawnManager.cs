@@ -13,7 +13,7 @@ public class SpawnManager : MonoBehaviour {
     public List<Transform> listPosition = new List<Transform>();
 	// Use this for initialization
 	void Start () {
-	
+	    
 	}
 
     [ContextMenu("test")]
@@ -51,7 +51,7 @@ public class SpawnManager : MonoBehaviour {
     public Transform RandomPosition()
     {
         int _index = Random.Range(0,listPosition.Count);
-        Debug.Log(_index);
+        //Debug.Log(_index);
         return listPosition[_index];
     }
 	// Update is called once per frame
