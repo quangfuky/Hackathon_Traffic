@@ -20,9 +20,18 @@ public class CPlayerController : MonoBehaviour {
             CEnemyTest test = currCar.GetComponent<CEnemyTest>();
             if(test)
             {
-                if(!test.isCatch)
+                if(!test.isCatch) // bi bat hay chua
                 {
-
+                    if(test.isViolation) // co vi pham giao thong
+                    {
+                        ScoreManager.Instance.ScoreCatchGood++;
+                    }
+                    else
+                    {
+                        ScoreManager.Instance.ScorecatchFail++;
+                    }
+                    currCar.gameObject.SetActive(false);
+                    currCar = null;
                 }
             }
         }

@@ -5,11 +5,7 @@ using PathologicalGames;
 
 public enum ObjectType
 {
-    UI_CHARACTER = 1,
-    CHARACTER = 2,
-
-    UI_SLIDER = 3,
-    UI_ITEM = 4
+    CAR_PREFABS =1
 }
 
 [System.Serializable]
