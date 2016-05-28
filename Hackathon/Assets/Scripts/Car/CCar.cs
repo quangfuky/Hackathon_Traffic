@@ -82,8 +82,13 @@ public class CCar : MonoBehaviour {
     {
         if (col.tag == "CheckPoint" && !isCollided)
         {
+            // check xem den gi
+
             canMove = false;
+
             isCollided = true;
+            // random co vuot den do hay ko 
+
             Invoke("ChangeStateMove",3);
         }
     }
@@ -93,5 +98,16 @@ public class CCar : MonoBehaviour {
         direction = GetRandomEnum<CAR_DIRECTION>();
         Debug.Log("dir:"+direction);
         canMove = true;
+    }
+
+    public bool RandomViolation()
+    {
+        int rand = Random.Range(0, 100);
+        if (rand < 50)
+        {
+            return false;
+        }
+        else
+            return true;
     }
 }
