@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoSingleton<ScoreManager> {
     [SerializeField]
@@ -17,13 +18,28 @@ public class ScoreManager : MonoSingleton<ScoreManager> {
         get { return scorecatchFail; }
         set { scorecatchFail = value; }
     }
+
+    public Text txtGoodScore;
+    public Text txtFailScore;
+
 	// Use this for initialization
 	void Start () {
-	
+	    
 	}
+
+    public void UpdateShowGoodScore()
+    {
+        txtGoodScore.text = ScoreCatchGood.ToString();
+    }
+
+    public void UpdateShowFailScore()
+    {
+        txtFailScore.text = ScorecatchFail.ToString();
+    }
 
 	// Update is called once per frame
 	void Update () {
-	
+        UpdateShowGoodScore();
+        UpdateShowFailScore();
 	}
 }
