@@ -13,10 +13,12 @@ public class TrafficLight : MonoBehaviour
     public float lightTime;
     public int lightIndex;
 
+    public float minTime = 2.0f;
+    public float maxTime = 3.0f;
     // Use this for initialization
     void Start()
     {
-        lightTime = Random.Range(5, 10);
+        lightTime = Random.Range(minTime, maxTime);
         Change();
     }
 

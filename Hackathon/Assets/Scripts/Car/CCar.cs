@@ -82,27 +82,45 @@ public class CCar : MonoBehaviour {
     {
         if (col.tag == "CheckPoint" && !isCollided)
         {
-            // check xem den gi
-
-            canMove = false;
-
-            isCollided = true;
-            // random co vuot den do hay ko 
-
-            Invoke("ChangeStateMove",3);
+            CheckPoint StateLight = col.GetComponent<CheckPoint>();
+            Debug.Log(StateLight.canGo);
+            // check xem den xanh hay do
+            if (StateLight.canGo)
+            {
+                 canMove = true;
+            }
+            else
+            {
+                Debug.Log("den do");
+                isCollided = true;
+                // random co vuot den do hay ko 
+                bool violation = RandomViolation();
+                Debug.Log("vi pham:" + violation);
+                if (violation) // if true : vuot den do
+                {
+                    canMove = true;
+                }
+                else
+                {
+                    canMove = false;
+                    Invoke("ChangeStateMove", 3);
+                }
+            }
         }
     }
 
     void ChangeStateMove()
     {
         direction = GetRandomEnum<CAR_DIRECTION>();
-        Debug.Log("dir:"+direction);
         canMove = true;
     }
 
+    // true : vi pham
+    // false : khong vi pham
     public bool RandomViolation()
     {
         int rand = Random.Range(0, 100);
+        Debug.Log("rand:"+rand);
         if (rand < 50)
         {
             return false;
